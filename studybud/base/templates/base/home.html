@@ -1,20 +1,9 @@
-{% extends 'main.html' %}
-
-
-{% block content %}
-
-<style>
-    .home-container {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-    }
-</style>
+{% extends 'main.html' %} {% block content %}
 
 <div class="home-container">
-
     <div>
         <h3>Browse Topic</h3>
-        <hr>
+        <hr />
 
         <div>
             <a href="{% url 'home' %}">All</a>
@@ -39,10 +28,18 @@
                 <a href="{% url 'update-room' room.id %}">Edit</a>
                 <a href="{% url 'delete-room' room.id %}">Delete</a>
                 {% endif %}
+
+                {% if room.thumbnail %}
+                <img src="{{room.getImage}}" class="room_thumbnail"/>
+                {% endif %}
+
                 <span>@{{room.host.username}}</span>
-                <h5> {{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
+                <h5>
+                    {{room.id}} --
+                    <a href="{% url 'room' room.id %}">{{room.name}}</a>
+                </h5>
                 <small>{{room.topic}}</small>
-                <hr>
+                <hr />
             </div>
             {% endfor %}
         </div>
@@ -50,19 +47,16 @@
 
     <div>
         <h3>Recent Activity</h3>
-        <hr>
+        <hr />
         {% for comment in recent_activities %}
-            <div>
-                <small>@{{comment.user}} {{comment.created|timesince}}</small>
-                <small>replied to "{{comment.room}}"</small>
+        <div>
+            <small>@{{comment.user}} {{comment.created|timesince}}</small>
+            <small>replied to "{{comment.room}}"</small>
 
-                <p>{{comment.body}}</p>
-            </div>
+            <p>{{comment.body}}</p>
+        </div>
         {% endfor %}
     </div>
-
 </div>
-
-
 
 {% endblock content %}

@@ -1,0 +1,40 @@
+.room-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.room_thumbnail {
+    width: 40px;
+    height: 40px;
+}
+
+.mynavbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 10vh;
+    width: 100%;
+    background-color: #3f4156;
+}
+
+#nav_search{
+    width: 30%;
+}
+
+#nav_logo {
+    color: #fff;
+    margin-left: 5%;
+    margin-right: 2%;
+}
+
+.nav_login{
+    margin-left: auto; 
+    margin-right: 5%;
+    color: #fff
+}

@@ -112,7 +112,7 @@ def room(request, id):
 def createRoom(request):
     form = RoomForm()
     if request.method == 'POST':
-        form = RoomForm(request.POST)
+        form = RoomForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home')
@@ -130,7 +130,7 @@ def updateRoom(request, id):
         return HttpResponse("You are not allowed here!")
 
     if request.method == 'POST':
-        form = RoomForm(request.POST)
+        form = RoomForm(request.POST, request.FILES, instance=room)
         if form.is_valid():
             form.save()
             return redirect('home')
